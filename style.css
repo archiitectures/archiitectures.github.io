@@ -21,10 +21,9 @@ body {
   justify-content: center;
 }
 
-/* The background image layer — swap in your own image via background-image */
 .hero-bg {
   position: absolute;
-  inset: -10%;          /* extra bleed so scale(1.1) never shows edges */
+  inset: -10%;
   background-image: url('website_hero.jpg');
   background-size: cover;
   background-position: center;
@@ -32,12 +31,9 @@ body {
   transform-origin: center center;
   transition: transform 0.05s linear;
   will-change: transform;
-
-  /* Fallback gradient if no image is set */
   background-color: #2a2a2a;
 }
 
-/* Dark overlay so name stays legible */
 .hero-bg::after {
   content: '';
   position: absolute;
@@ -61,7 +57,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Subtle scroll hint */
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -104,33 +99,33 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* ── Corner links ── */
-.corner-links {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+/* ── Social icons — fixed top right ── */
+.social-links {
+  position: fixed;
+  top: 1.75rem;
+  right: 2rem;
+  z-index: 100;
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
 }
 
-.corner {
-  position: absolute;
-  pointer-events: all;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #6b6660;
+.social-links a {
+  color: rgba(240, 236, 228, 0.45);
   text-decoration: none;
   transition: color 0.3s ease;
-  padding: 2.5rem;
+  display: flex;
+  align-items: center;
 }
 
-.corner:hover { color: #f0ece4; }
+.social-links a:hover {
+  color: #f0ece4;
+}
 
-.top-left    { top: 0; left: 0; }
-.top-right   { top: 0; right: 0; }
-.bottom-left { bottom: 0; left: 0; }
-.bottom-right{ bottom: 0; right: 0; }
+.social-links svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
