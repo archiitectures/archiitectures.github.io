@@ -54,7 +54,7 @@ body {
   font-size: clamp(3rem, 10vw, 9rem);
   letter-spacing: 0.12em;
   color: #f0ece4;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .scroll-hint {
