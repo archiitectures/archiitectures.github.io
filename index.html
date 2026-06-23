@@ -6,6 +6,7 @@
   <title>Archiitectures</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
 </head>
 <body>
 
@@ -18,16 +19,40 @@
     <div class="scroll-hint">↓</div>
   </section>
 
+
+
   <!-- ABOUT -->
   <section class="about">
+    <div id="proteinViewer" class="protein-viewer"></div>
     <div class="about-inner">
       <p class="about-text">
-        I am an undergraduate at the California Institute of Technology (Caltech) majoring in Chemical Engineering with a focus on machine learning. My research work includes data analysis for medical data and deep learning work with protein models. I also enjoy photography and watching sports (hotty toddy!).
+        I am an undergraduate at the California Institute of Technology (Caltech) 
+        majoring in Chemical Engineering with a focus on machine learning. My research work 
+        includes data analysis for medical data and deep learning work with protein models. 
+        I also enjoy photography and watching sports 
+        (<a href="https://www.youtube.com/watch?v=Vz2JTZ-RU6w" 
+        target="_blank" class="hotty-toddy"><span class="hotty">hotty</span> 
+        <span class="toddy">toddy</span></a>!).
       </p>
+      <a href="resume/" class="resume-link">Resume →</a>
     </div>
+
 
     <!-- Top-right icon links -->
     <nav class="social-links">
+      <button class="protein-toggle" id="proteinToggle" aria-label="Toggle protein background">
+          <img src="protein_bg_icon.svg" alt="" />
+      </button>
+
+      <!-- Test button
+      <button class="protein-toggle" id="proteinToggle" aria-label="Toggle protein background">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button> -->
+
+
       <a href="https://instagram.com/archiitectures" target="_blank" aria-label="Instagram">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>

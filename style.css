@@ -1,7 +1,7 @@
 /* ── Reset ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { overflow-y: scroll; scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
@@ -34,7 +34,7 @@ body {
   background-position: center;
   background-color: #2a2a2a;
 
-  transform: scale(1);
+  transform: scale(1.12);
   transform-origin: center center;
   transition: transform 0.05s linear;
   will-change: transform;
@@ -109,6 +109,7 @@ body {
 .about-inner {
   max-width: 640px;
   text-align: center;
+  z-index: 1;
 }
 
 .about-text {
@@ -118,6 +119,46 @@ body {
   line-height: 1.8;
   color: #c8c4bc;
   letter-spacing: 0.02em;
+}
+
+/* ── Hotty Toddy! ── */
+.hotty-toddy {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hotty, .toddy {
+  transition: color 0.3s ease, font-weight 0.3s ease, font-size 0.3s ease;
+}
+
+.hotty-toddy:hover .hotty {
+  color: #CE2029;
+  font-weight: 640000;
+  font-size: 1.03em;
+}
+
+.hotty-toddy:hover .toddy {
+  color: #003087;
+  font-weight: 640000;
+  font-size: 1.03em;
+}
+
+/* ── Resume link in about me paragraph ── */
+.resume-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: rgba(240, 236, 228, 0.45);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.resume-link:hover {
+  color: #f0ece4;
 }
 
 /* ── Social icons — fixed top right ── */
@@ -148,8 +189,199 @@ body {
   height: 1.3rem;
 }
 
-/* ── Reduced motion ── */
+/* ── Instagram gradient animation ── */
+@keyframes igGradient {
+  0%   { color: #f58529; }
+  25%  { color: #dd2a7b; }
+  50%  { color: #8134af; }
+  75%  { color: #515bd4; }
+  100% { color: #f58529; }
+}
+
+.social-links a[aria-label="Instagram"] svg {
+  transition: color 0.3s ease;
+}
+
+.social-links a[aria-label="Instagram"]:hover svg {
+  animation: igGradient 3s linear infinite;
+}
+
+/* -- Linkedin fill animation -- */
+.social-links a[aria-label="LinkedIn"] svg {
+  transition: color 0.4s ease, background 0.4s ease;
+  border-radius: 3px;
+}
+
+.social-links a[aria-label="LinkedIn"] svg rect {
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+
+.social-links a[aria-label="LinkedIn"] svg line,
+.social-links a[aria-label="LinkedIn"] svg path {
+  transition: stroke 0.4s ease;
+}
+
+.social-links a[aria-label="LinkedIn"]:hover svg {
+  color: #0077B5;
+  background: #0077B5;
+}
+
+.social-links a[aria-label="LinkedIn"]:hover svg rect {
+  fill: #0077B5;
+  stroke: #0077B5;
+}
+
+.social-links a[aria-label="LinkedIn"]:hover svg line,
+.social-links a[aria-label="LinkedIn"]:hover svg path {
+  stroke: #ffffff;
+}
+
+/* -- Email flip open animation */
+.social-links a[aria-label="Email"] svg {
+  overflow: visible;
+}
+
+.social-links a[aria-label="Email"] svg polyline {
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.social-links a[aria-label="Email"]:hover svg polyline {
+  transform: translateY(-16px) rotateX(180deg);
+}
+
+/* ──------------------------ Resume page ──----------------- */
+.resume-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #1c1c1c;
+}
+
+.resume-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.resume-download {
+  position: fixed;
+  top: 1.75rem;
+  right: 2rem;
+  z-index: 100;
+  color: rgba(240, 236, 228, 0.45);
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.resume-download:hover {
+  color: #f0ece4;
+}
+
+.resume-download svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+
+/* ── Download icon animation ── */
+.dl-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  overflow: visible;
+}
+
+/* Ring starts as just the bottom arc (like a tray), expands to full circle on hover */
+.dl-ring {
+  stroke-dasharray: 56.5; /* full circumference of r=9 circle */
+  stroke-dashoffset: 42.4; /* hides ~75% so only bottom arc shows */
+  transform-origin: center;
+  transform: rotate(-45deg);
+  transition: stroke-dashoffset 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+}
+
+.dl-shaft {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.dl-arrow {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+/* On hover: arrow drops down, ring completes */
+.resume-download:hover .dl-shaft {
+  transform: translateY(2px);
+}
+
+.resume-download:hover .dl-arrow {
+  transform: translateY(2px);
+}
+
+.resume-download:hover .dl-ring {
+  stroke-dashoffset: 0;
+  transform: rotate(-45deg);
+}
+
+
+/* ──----------------- Protein toggle (main page)──------------------- */
+.protein-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: rgba(240, 236, 228, 0.45);
+  transition: color 0.3s ease;
+}
+
+.protein-toggle:hover {
+  color: #f0ece4;
+}
+
+.protein-toggle img {
+  width: 1.3rem;
+  height: 1.3rem;
+  opacity: 0.45;
+  filter: invert(1);
+  transition: filter 1.5s ease, opacity 0.3s ease;
+}
+
+.protein-toggle:hover img {
+  filter: invert(0);
+  opacity: 1;
+}
+
+.protein-toggle svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+/* ── Protein viewer (animation)── */
+.protein-viewer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about.protein-active .protein-viewer {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+
+
+/* ── Reduced motion (last block always)── */
+
 @media (prefers-reduced-motion: reduce) {
   .hero-bg { transition: none; }
   .scroll-hint { animation: none; }
+  .social-links a[aria-label="Instagram"] svg { animation: none; }
 }
