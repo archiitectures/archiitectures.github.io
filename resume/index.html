@@ -4,19 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume — Architesh Prasad</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
   <div class="resume-page">
     <a href="resume.pdf" download class="resume-download" aria-label="Download Resume">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3v13M7 11l5 5 5-5"/>
-        <path d="M3 21h18"/>
+      <svg class="dl-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line class="dl-shaft" x1="12" y1="3" x2="12" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <polyline class="dl-arrow" points="7,11 12,16 17,11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="dl-ring" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
     </a>
-    <iframe src="https://docs.google.com/viewer?url=https://prasad.archi/resume/resume.pdf&embedded=true" class="resume-frame"></iframe>
-
+    <canvas id="pdfCanvas"></canvas>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const canvas = document.getElementById('pdfCanvas');
+    const ctx = canvas.getContext('2d');
+
+    pdfjsLib.getDocument('resume.pdf').promise.then(pdf => {
+      pdf.getPage(1).then(page => {
+        const viewport = page.getViewport({ scale: window.devicePixelRatio || 1.5 });
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.objectFit = 'contain';
+        page.render({ canvasContext: ctx, viewport });
+      });
+    });
+  </script>
 </body>
 </html>
