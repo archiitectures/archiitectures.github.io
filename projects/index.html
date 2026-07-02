@@ -7,44 +7,46 @@
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <main class="project-page">
+  <main class="projects-index">
     <a href="/" class="project-back">← Back</a>
 
-    <section class="project-hero">
-      <p class="project-kicker">Selected Projects</p>
-      <h1 class="project-title">LSER parameter prediction for chemicals</h1>
-      <p class="project-description about-text">
-        This project developed LSER models to predict the partitioning of molecules from blood to blood vessel cells, serving as a proxy for the permeability of intravenous pharmaceuticals. A full data science pipeline was applied to a dataset of 3723 molecules, incorporating Mahalanobis distance-based clustering to isolate a pharmaceutical-relevant subset (n = 958). Four models: MLR, PLS, and LASSO were built and validated against LSER coefficients estimated from membrane permeability principles. Using Diazepam as a permeability reference, predicted relative permeabilities for pharmaceutical molecules averaged -0.35, -0.13, and -0.09 across the three model types. The resulting framework enables permeability prediction for any molecule whose LSER parameters can be sourced from PubChem, calibrated against a compound of known blood-to-vessel permeability. <a href="https://github.com/archiitectures/LSER-Prediction-for-Chemicals/" target="_blank" rel="noreferrer" class="project-link">GitHub</a>
+    <section class="projects-header">
+      <p class="projects-intro">
+        A selection of work encompassing machine learning, chemical engineering, and computational biology.
       </p>
     </section>
 
-    <section class="project-figures" aria-label="Project figures">
-      <article class="figure-card">
-        <div class="figure-frame figure-frame--interactive">
+    <section class="project-grid" aria-label="Project cards">
+      <a class="project-card" href="./lser/">
+        <div class="project-card-media">
+          <img
+            class="project-card-poster"
+            src="./lser/assets/preview.png"
+            alt="LSER project preview poster"
+          />
           <iframe
-            class="figure-embed"
-            src="./lser-figures/interactive_mahalanobis_pca.html"
-            title="Interactive Mahalanobis PCA figure"
+            class="project-card-hover"
+            src="./lser/assets/preview.html"
+            title="LSER interactive preview"
             loading="lazy"
           ></iframe>
         </div>
-        <p class="figure-caption">Figure 1: Scatter plot in PCA space. Mahalanobis distance was calculated using the pharmaceutical molecules as the mean, and molecules within the threshold distance (indicated by the ellipse) were selected. This produces a dataset biased toward greater similarity to the target molecules, which achieved higher correlations than training on the full dataset.</p>
-      </article>
-
-      <article class="figure-card">
-        <div class="figure-frame">
-          <img
-            class="figure-image"
-            src="./lser-figures/all_models_residuals_and_qq.png"
-            alt="All models residuals and QQ figure"
-            loading="lazy"
-          />
+        <div class="project-card-body">
+          <h2 class="project-card-title">LSER parameter prediction for chemicals</h2>
+          <p class="project-card-description">
+            LSER models for estimating blood-to-vessel permeability for pharmaceutical molecules using a data-driven LSER pipeline and pharmaceutical-relevant clustering.
+          </p>
+          <div class="project-card-tags" aria-label="Project tags">
+            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">LSER</span>
+            <span class="project-tag">Chemicals</span>
+            <span class="project-tag">Visualization</span>
+          </div>
         </div>
-        <p class="figure-caption">Figure 2: All models residual and QQ plots.</p>
-      </article>
+      </a>
     </section>
   </main>
 </body>
