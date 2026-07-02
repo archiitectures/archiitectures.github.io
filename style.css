@@ -192,6 +192,15 @@ body {
   height: 1.3rem;
 }
 
+.github-link {
+  display: flex;
+  align-items: center;
+}
+
+.github-icon {
+  overflow: visible;
+}
+
 /* ── Instagram gradient animation ── */
 @keyframes igGradient {
   0%   { color: #f58529; }
@@ -358,6 +367,11 @@ body {
   opacity: 1;
 }
 
+.protein-toggle.active img {
+  filter: invert(0);
+  opacity: 1;
+}
+
 .protein-toggle svg {
   width: 1.3rem;
   height: 1.3rem;
@@ -372,7 +386,8 @@ body {
   z-index: 0;
 }
 
-.about.protein-active .protein-viewer {
+.about.protein-active .protein-viewer,
+body.protein-active .protein-viewer {
   opacity: 1;
   pointer-events: auto;
 }
