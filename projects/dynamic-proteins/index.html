@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computational Design of Dynamic Proteins — Architesh Prasad</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+</head>
+<body>
+  <div id="proteinViewer" class="protein-viewer"></div>
+  <main class="project-page">
+    <a href="/projects/" class="project-back">← Back</a>
+
+    <section class="project-hero">
+      <p class="project-kicker">In Progress</p>
+      <h1 class="project-title">Computational Design of Dynamic Proteins</h1>
+      <p class="project-description about-text">
+        Different SOTA methods of protein structure design, such as AlphaFold 3, are best at determining the structures of static proteins. We are interested in generating the structures of dynamic proteins such as ATP synthase and myosin. This ongoing research project is considering methods such as fine-tuning current models and designing new objective functions to achieve the desired results. Modeling conformational changes is important to unlock the full capability of the protein landscape. Since many proteins include state switching in their functionality, harnessing this ability will lead to much more expressive protein engineering abilities.
+      </p>
+    </section>
+
+    <section class="project-figures project-figures--two-up" aria-label="Project figures">
+      <article class="figure-card">
+        <div class="figure-frame figure-frame--media">
+          <img
+            class="figure-image"
+            src="../vanderbilt_kuriyan.gif"
+            alt="Dynamic protein concept animation"
+            loading="lazy"
+          />
+        </div>
+        <p class="figure-caption">Figure 1: Example animation courtesy of the Kuriyan Lab at Vanderbilt.</p>
+      </article>
+
+      <article class="figure-card">
+        <div class="figure-frame figure-frame--media">
+          <img
+            class="figure-image"
+            src="./assets/ATPsynthase_animated.gif"
+            alt="ATP synthase rotation mechanism animation"
+            loading="lazy"
+          />
+        </div>
+        <p class="figure-caption">Figure 2: ATP synthase rotation mechanism courtesy of the RCSB protein database.</p>
+      </article>
+    </section>
+  </main>
+
+  <nav class="social-links">
+    <a href="https://github.com/archiitectures" target="_blank" rel="noreferrer" aria-label="GitHub" class="github-link">
+      <span class="github-static">
+        <img src="../../assets/icons/Github.svg" alt="" aria-hidden="true" />
+      </span>
+      <span class="github-hover">
+        <video class="github-hover-video" muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="../../assets/icons/Github.webm" type="video/webm" />
+        </video>
+        <img class="github-hover-gif" src="../../assets/icons/Github.gif" alt="" aria-hidden="true" />
+      </span>
+    </a>
+    <button class="protein-toggle" id="proteinToggle" aria-label="Toggle protein background">
+      <img src="../../assets/icons/protein_bg_icon.svg" alt="" />
+    </button>
+    <a href="https://instagram.com/archiitectures" target="_blank" rel="noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/architesh/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="3"/>
+        <line x1="8" y1="11" x2="8" y2="17"/>
+        <line x1="8" y1="8" x2="8" y2="8.5"/>
+        <path d="M12 11v6M12 14a3 3 0 0 1 6 0v3"/>
+      </svg>
+    </a>
+    <a href="mailto:archiitectures@gmail.com" aria-label="Email">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <polyline points="2,4 12,13 22,4"/>
+      </svg>
+    </a>
+  </nav>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,5 +1,10 @@
 // Zoom out hero background as you scroll down
 const heroBg = document.getElementById('heroBg');
+const projectsShell = document.querySelector('.projects-index, .project-page');
+
+if (projectsShell) {
+  document.body.classList.add('project-site');
+}
 
 function onScroll() {
   if (!heroBg) return;
@@ -51,6 +56,29 @@ document.querySelectorAll('.github-link').forEach((link) => {
 
   link.addEventListener('pointerenter', startPreview);
   link.addEventListener('pointerleave', stopPreview);
+});
+
+document.querySelectorAll('.project-card--gif-preview').forEach((card) => {
+  const hoverGif = card.querySelector('.project-card-hover-gif[data-hover-src]');
+  if (!hoverGif) return;
+
+  const hoverSrc = hoverGif.dataset.hoverSrc;
+
+  const startPreview = () => {
+    card.classList.add('is-hovering');
+    hoverGif.removeAttribute('src');
+    hoverGif.src = hoverSrc;
+  };
+
+  const stopPreview = () => {
+    card.classList.remove('is-hovering');
+    hoverGif.removeAttribute('src');
+  };
+
+  card.addEventListener('pointerenter', startPreview);
+  card.addEventListener('pointerleave', stopPreview);
+  card.addEventListener('focus', startPreview);
+  card.addEventListener('blur', stopPreview);
 });
 
 if (heroBg) {
