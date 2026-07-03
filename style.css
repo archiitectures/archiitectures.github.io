@@ -451,12 +451,14 @@ body.protein-active .protein-viewer {
 
 /* ── Projects index ── */
 .projects-index {
+  position: relative;
   min-height: 100vh;
   padding: 2rem 2rem 4rem;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 30%),
     #1c1c1c;
   color: #d4d0c8;
+  z-index: 1;
 }
 
 .projects-header {
@@ -581,12 +583,14 @@ body.protein-active .protein-viewer {
 
 /* ── Project detail page ── */
 .project-page {
+  position: relative;
   min-height: 100vh;
   padding: 2rem 2rem 4rem;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 30%),
     #1c1c1c;
   color: #d4d0c8;
+  z-index: 1;
 }
 
 .project-back {
