@@ -10,6 +10,49 @@ function onScroll() {
   heroBg.style.transform = `scale(${scale})`;
 }
 
+document.querySelectorAll('.github-link').forEach((link) => {
+  const video = link.querySelector('.github-hover-video');
+  const gif = link.querySelector('.github-hover-gif');
+
+  if (!video || !gif) return;
+
+  const canUseWebm = typeof video.canPlayType === 'function' && video.canPlayType('video/webm; codecs="vp8, vorbis"') !== '';
+
+  link.classList.toggle('github-gif-fallback', !canUseWebm);
+
+  video.hidden = true;
+  gif.hidden = true;
+
+  const startPreview = () => {
+    link.classList.add('is-hovering');
+    if (canUseWebm) {
+      video.hidden = false;
+      gif.hidden = true;
+      video.currentTime = 0;
+      const maybePromise = video.play();
+      if (maybePromise && typeof maybePromise.catch === 'function') {
+        maybePromise.catch(() => {});
+      }
+    } else {
+      video.hidden = true;
+      gif.hidden = false;
+    }
+  };
+
+  const stopPreview = () => {
+    link.classList.remove('is-hovering');
+    if (canUseWebm) {
+      video.pause();
+      video.currentTime = 0;
+    }
+    video.hidden = true;
+    gif.hidden = true;
+  };
+
+  link.addEventListener('pointerenter', startPreview);
+  link.addEventListener('pointerleave', stopPreview);
+});
+
 if (heroBg) {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -21,6 +64,11 @@ const aboutSection = document.querySelector('.about');
 const proteinViewer = document.getElementById('proteinViewer');
 const proteinHost = aboutSection || document.body;
 let viewerInitialized = false;
+
+if (window.$3Dmol?.GLViewer?.prototype && !window.$3Dmol.GLViewer.prototype.__archiNoWheelPatch) {
+  window.$3Dmol.GLViewer.prototype.__archiNoWheelPatch = true;
+  window.$3Dmol.GLViewer.prototype._handleMouseScroll = function() {};
+}
 
 if (proteinToggle && proteinViewer) {
   proteinToggle.addEventListener('click', () => {

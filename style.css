@@ -193,12 +193,69 @@ body {
 }
 
 .github-link {
-  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  justify-content: center;
   align-items: center;
+  background: transparent;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 
-.github-icon {
-  overflow: visible;
+.github-link:hover,
+.github-link:focus-visible {
+  color: #f0ece4;
+}
+
+.github-static,
+.github-hover {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.github-static img,
+.github-hover-video,
+.github-hover-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(0.52);
+}
+
+.github-hover {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.github-hover-gif {
+  opacity: 0;
+}
+
+.github-link.is-hovering .github-static {
+  opacity: 0;
+}
+
+.github-link.is-hovering .github-hover {
+  display: grid;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.github-link.is-hovering.github-gif-fallback .github-hover-video {
+  display: none;
+}
+
+.github-link.is-hovering.github-gif-fallback .github-hover-gif {
+  opacity: 1;
 }
 
 /* ── Instagram gradient animation ── */
